@@ -105,14 +105,21 @@ module RRRSpec
         Signal.trap(:INT, do_cancel)
 
         loop do
+          puts 'test1'
           rs, ws, = IO.select([rd], [], [], options[:pollsec])
+          puts 'test2'
           if rs == nil
+            puts 'test3'
             break if taskset.persisted?
+            puts 'test4'
           elsif rs.size != 0
             rs[0].getc
             taskset.cancel
+            puts 'test5'
             break
+            puts 'test6'
           end
+          puts 'test7'
         end
       end
 
