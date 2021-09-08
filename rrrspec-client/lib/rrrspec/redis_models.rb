@@ -176,7 +176,7 @@ module RRRSpec
     end
 
     def exist?
-      RRRSpec.redis.exists?(key)
+      RRRSpec.redis.exists(key)
     end
 
     def persisted?
