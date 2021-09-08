@@ -87,16 +87,12 @@ module RRRSpec
       option :pollsec, type: :numeric, default: WAIT_POLLING_SEC
       desc 'waitfor', 'wait for the taskset'
       def waitfor(taskset_id)
-        puts 'test-3'
         setup(Configuration.new)
         
         taskset = Taskset.new(taskset_id)
-        puts 'test-2'
         exit(1) unless taskset.exist?
 
         rd, wt = IO.pipe
-
-        puts 'test-1'
 
         cancelled = false
         do_cancel = proc {
@@ -109,24 +105,18 @@ module RRRSpec
         Signal.trap(:TERM, do_cancel)
         Signal.trap(:INT, do_cancel)
 
-        puts 'test0'
-
         loop do
           puts 'test1'
           rs, ws, = IO.select([rd], [], [], options[:pollsec])
-          puts 'test2'
+          puts rs, ws
           if rs == nil
-            puts 'test3'
             break if taskset.persisted?
             puts 'test4'
           elsif rs.size != 0
             rs[0].getc
             taskset.cancel
-            puts 'test5'
             break
-            puts 'test6'
           end
-          puts 'test7'
         end
       end
 
