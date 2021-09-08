@@ -180,6 +180,7 @@ module RRRSpec
     end
 
     def persisted?
+      puts 'AAAAAAAA!!!!!!!', RRRSpec.redis.ttl(key), 'UUUUUUUUUUU!!!!!!!!!!!!!'
       RRRSpec.redis.ttl(key) != -1
     end
 
