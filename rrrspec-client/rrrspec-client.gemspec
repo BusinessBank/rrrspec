@@ -22,7 +22,7 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler"
   spec.add_development_dependency "rake"
-  spec.add_dependency "activesupport"
+  spec.add_dependency "activesupport", "~> 5.1.6.2"
   spec.add_dependency "extreme_timeout", ">=0.3.2"
   spec.add_dependency "launchy"
   spec.add_dependency "redis"
