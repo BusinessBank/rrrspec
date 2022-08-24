@@ -24,6 +24,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake"
   spec.add_dependency "activesupport", "~> 5.1.6.2"
   spec.add_dependency "extreme_timeout", ">=0.3.2"
+  spec.add_dependency "public_suffix", "< 5.0"
   spec.add_dependency "launchy"
   spec.add_dependency "redis"
   spec.add_dependency "rspec", ">= 3.0"
