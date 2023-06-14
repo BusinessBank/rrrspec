@@ -207,7 +207,7 @@ module RRRSpec
       end
 
       def execute_with_logs(chdir, command, env, input=nil)
-        Bundler.with_clean_env do
+        Bundler.with_unbundled_env do
           in_rd, in_wt = IO.pipe
           out_rd, out_wt = IO.pipe
           err_rd, err_wt = IO.pipe
