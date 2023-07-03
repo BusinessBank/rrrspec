@@ -91,14 +91,7 @@ module RRRSpec
       end
 
       def hook_context
-        @hook_context ||= begin
-          if RSpec::Core::Version::STRING < '3.5.3'
-            RSpec::Core::SuiteHookContext.new
-          else
-            RSpec::Core::SuiteHookContext
-              .new('before(:suite)', @configuration.reporter)
-          end
-        end
+        @hook_context ||= RSpec::Core::SuiteHookContext.new('before(:suite)', @configuration.reporter)
       end
     end
   end
